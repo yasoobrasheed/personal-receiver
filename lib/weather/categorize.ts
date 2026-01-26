@@ -34,7 +34,10 @@ export function categorizeWeather(current: CurrentWeather): CategorizedWeather {
     category = 'sunny';
   } else if (conditionText === 'clear') {
     category = 'clear';
-  } else if (conditionText.includes('partly cloudy') || conditionText.includes('partly sunny')) {
+  } else if (
+    conditionText.includes('partly cloudy') ||
+    conditionText.includes('partly sunny')
+  ) {
     category = 'partly_cloudy';
   } else if (conditionText === 'cloudy') {
     category = 'cloudy';
@@ -46,15 +49,24 @@ export function categorizeWeather(current: CurrentWeather): CategorizedWeather {
     category = 'mist';
   } else if (conditionText.includes('thunder')) {
     category = 'thunderstorm';
-  } else if (conditionText.includes('heavy rain') || conditionText.includes('torrential')) {
+  } else if (
+    conditionText.includes('heavy rain') ||
+    conditionText.includes('torrential')
+  ) {
     category = 'heavy_rain';
   } else if (conditionText.includes('moderate rain')) {
     category = 'moderate_rain';
-  } else if (conditionText.includes('light rain') || conditionText.includes('patchy rain')) {
+  } else if (
+    conditionText.includes('light rain') ||
+    conditionText.includes('patchy rain')
+  ) {
     category = 'light_rain';
   } else if (conditionText.includes('drizzle')) {
     category = 'drizzle';
-  } else if (conditionText.includes('snow') || conditionText.includes('blizzard')) {
+  } else if (
+    conditionText.includes('snow') ||
+    conditionText.includes('blizzard')
+  ) {
     category = 'snow';
   } else if (conditionText.includes('sleet') || conditionText.includes('ice')) {
     category = 'sleet';
