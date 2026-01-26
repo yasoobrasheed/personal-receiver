@@ -26,6 +26,8 @@ export async function GET(request: NextRequest) {
       weather: categorized,
     };
 
+    console.log('[Cron] Weather polled:', response);
+
     return NextResponse.json(response);
   } catch (error) {
     console.error('Weather cron error:', error);
