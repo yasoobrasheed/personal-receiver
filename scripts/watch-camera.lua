@@ -1,6 +1,7 @@
 -- This script is used to watch the camera and send a webhook to the server when the camera is on or off.
 -- You will need to install hammerspoon for this
 -- Then you'll need to set it at ~/.hammerspoon/init.lua
+-- Then open up hammerspoon and refresh the config
 
 -- Camera webhook configuration
 local webhookUrl = "http://localhost:3000/api/camera"

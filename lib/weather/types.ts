@@ -55,3 +55,20 @@ export interface WeatherAPIError {
     readonly message: string;
   };
 }
+
+// Astronomy API types
+export interface Astronomy {
+  readonly sunrise: string; // e.g., "06:45 AM"
+  readonly sunset: string; // e.g., "07:30 PM"
+  readonly moonrise: string;
+  readonly moonset: string;
+  readonly moon_phase: string;
+  readonly moon_illumination: number;
+}
+
+export interface AstronomyResponse {
+  readonly location: WeatherLocation;
+  readonly astronomy: {
+    readonly astro: Astronomy;
+  };
+}
