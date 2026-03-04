@@ -37,9 +37,9 @@ This project includes a daemon that changes a Govee H6022 light based on weather
 
 | Weather | Scene |
 |---------|-------|
-| sunny, clear | Rainbow |
-| partly_cloudy, cloudy | Snowflake |
-| overcast, fog, mist, windy, unknown | Starry Sky |
+| sunny, clear, partly_cloudy | Rainbow |
+| overcast, cloudy | Snowflake |
+| fog, mist, windy, unknown | Starry Sky |
 | rain, drizzle, thunderstorm, snow, sleet | Wave |
 
 The light only updates between **6:00 AM** and **30 minutes before sunset**.

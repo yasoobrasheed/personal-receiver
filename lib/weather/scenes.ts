@@ -11,18 +11,18 @@ export type WeatherSceneName = 'rainbow' | 'snowflake' | 'starry-sky' | 'wave';
  */
 export function getSceneForWeather(category: WeatherCategory): H6022SceneName {
   switch (category) {
-    // Clear weather → Rainbow
+    // Clear/partly cloudy → Rainbow
     case 'sunny':
     case 'clear':
+    case 'partly_cloudy':
       return 'rainbow';
 
-    // Cloudy weather → Snowflake
-    case 'partly_cloudy':
+    // Overcast/cloudy → Snowflake
+    case 'overcast':
     case 'cloudy':
       return 'snowflake';
 
     // Atmospheric conditions → Starry Sky
-    case 'overcast':
     case 'fog':
     case 'mist':
     case 'windy':
@@ -45,9 +45,9 @@ export function getSceneForWeather(category: WeatherCategory): H6022SceneName {
  * Weather category groups for display/logging purposes
  */
 export const WEATHER_SCENE_GROUPS: Record<WeatherSceneName, readonly WeatherCategory[]> = {
-  rainbow: ['sunny', 'clear'],
-  snowflake: ['partly_cloudy', 'cloudy'],
-  'starry-sky': ['overcast', 'fog', 'mist', 'windy', 'unknown'],
+  rainbow: ['sunny', 'clear', 'partly_cloudy'],
+  snowflake: ['overcast', 'cloudy'],
+  'starry-sky': ['fog', 'mist', 'windy', 'unknown'],
   wave: [
     'drizzle',
     'light_rain',
