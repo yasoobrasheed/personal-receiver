@@ -29,6 +29,72 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Weather-Triggered Govee Lighting
+
+This project includes a daemon that changes a Govee H6022 light based on weather conditions.
+
+### Weather → Scene Mapping
+
+| Weather | Scene |
+|---------|-------|
+| sunny, clear | Rainbow |
+| partly_cloudy, cloudy | Snowflake |
+| overcast, fog, mist, windy, unknown | Starry Sky |
+| rain, drizzle, thunderstorm, snow, sleet | Wave |
+
+The light only updates between **6:00 AM** and **30 minutes before sunset**.
+
+### Running the Weather Daemon
+
+**Test once:**
+```bash
+npx tsx scripts/test-weather-scene.ts
+```
+
+**Run as background daemon (polls every 5 min):**
+```bash
+npx tsx scripts/weather-daemon.ts
+```
+
+### macOS LaunchAgent (auto-start on login)
+
+The daemon is configured as a launchd service at `~/Library/LaunchAgents/com.weather.daemon.plist`.
+
+**Check status:**
+```bash
+launchctl list | grep weather
+```
+
+**View logs:**
+```bash
+tail -f ~/Library/Logs/weather-daemon.log
+```
+
+**Stop daemon:**
+```bash
+launchctl unload ~/Library/LaunchAgents/com.weather.daemon.plist
+```
+
+**Start daemon:**
+```bash
+launchctl load ~/Library/LaunchAgents/com.weather.daemon.plist
+```
+
+**Restart daemon:**
+```bash
+launchctl unload ~/Library/LaunchAgents/com.weather.daemon.plist && \
+launchctl load ~/Library/LaunchAgents/com.weather.daemon.plist
+```
+
+### Environment Variables
+
+Required in `.env.local`:
+```
+WEATHER_API_API_KEY=your_weatherapi_key
+WEATHER_LOCATION_LAT_LONG=30.0,-120.0
+GOVEE_H6022_IP=123.123.12.123
+```
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
